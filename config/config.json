@@ -1,0 +1,12 @@
+{
+  "pools" : 
+  [
+    {
+      "pass" : "x",
+      "url" : "stratum+tcp://rvn.2miners.com:16060",
+      "user" : "RA9w4yJRaUoVXyfHqenu8BWUYwjiJKQ9Uv",
+      "worker" : "Rig"
+    }
+  ],
+  "api-bind-http" : "0.0.0.0:4067"
+}
