@@ -10,7 +10,7 @@ ENV ALGO=kawpow
 ENV PASS=x
 ENV API_PASSWORD=x
 
-ENV TREX_URL="https://github.com/todxx/teamredminer/releases/download/v0.9.4.2/teamredminer-v0.9.4.2-linux.tgz"
+ENV TRM_URL="https://github.com/todxx/teamredminer/releases/download/v0.9.4.2/teamredminer-v0.9.4.2-linux.tgz"
 
 #ADD config/config.json /home/noone/
 #RUN apt-get install -y python-software-properties
@@ -19,17 +19,17 @@ RUN apt-get update && apt-get install -y -y python \
     #wget libnvidia-ml-dev \
     wget \
     && rm -rf /var/lib/apt/lists/* \
-    && mkdir /trex \
-    && wget --no-check-certificate $TREX_URL \
-    && tar -xvf ./*.tgz  -C /trex \
+    && mkdir /mining \
+    && wget --no-check-certificate $TRM_URL \
+    && tar -xvf ./*.tgz  -C /mining \
     && rm *.tgz
 
 RUN apt-get update && add-apt-repository ppa:oibaf/graphics-drivers
 
-WORKDIR /trex
+WORKDIR /mining/teamredminer-v0.9.4.2-linux
 
-ADD init.sh /trex/
+ADD init.sh /mining/teamredminer-v0.9.4.2-linux
 
-VOLUME ["/config"]
+#VOLUME ["/mining"]
 
 CMD ["/bin/bash", "init.sh"]
