@@ -13,16 +13,18 @@ ENV API_PASSWORD=x
 ENV TREX_URL="https://github.com/todxx/teamredminer/releases/download/v0.9.4.2/teamredminer-v0.9.4.2-linux.tgz"
 
 #ADD config/config.json /home/noone/
-RUN apt-get install software-properties-common
-RUN add-apt-repository ppa:oibaf/graphics-drivers
-RUN apt-get update && apt-get install -y --no-install-recommends \
+#RUN apt-get install -y python-software-properties
+RUN apt-get update && apt-get install -y -y python \
+    && apt-get install -y software-properties-common \
     #wget libnvidia-ml-dev \
     wget \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir /trex \
     && wget --no-check-certificate $TREX_URL \
-    && tar -xvf ./*.tar.gz  -C /trex \
-    && rm *.tar.gz
+    && tar -xvf ./*.tgz  -C /trex \
+    && rm *.tgz
+
+RUN apt-get update && add-apt-repository ppa:oibaf/graphics-drivers
 
 WORKDIR /trex
 
