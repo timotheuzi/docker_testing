@@ -3,7 +3,7 @@ FROM ubuntu:20.04
 ENV NVIDIA_DRIVER_CAPABILITIES="compute,video,utility"
 
 ENV WALLET=RA9w4yJRaUoVXyfHqenu8BWUYwjiJKQ9Uv
-ENV SERVER=stratum+tcp://rvn.2miners.com:16060
+ENV SERVER=stratum+tcp://rvn.2miners.com:6060
 ENV WORKER=tbot
 ENV ALGO=kawpow
 ENV PASS=x
