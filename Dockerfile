@@ -21,10 +21,14 @@ RUN apt-get update && apt-get install -y -y python \
     && tar -xvf ./*.tgz  -C /mining \
     && rm *.tgz
 
-RUN apt-get update && add-apt-repository ppa:oibaf/graphics-drivers
+RUN apt-get update && apt-get -y upgrade && add-apt-repository ppa:oibaf/graphics-drivers
+
+#RUN reboot
 
 WORKDIR /mining/teamredminer-v0.9.4.2-linux
 
 ADD init.sh /mining/teamredminer-v0.9.4.2-linux
+
+#CMD ["/bin/bash", "reboot"]
 
 CMD ["/bin/bash", "init.sh"]
